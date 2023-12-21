@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des tags</h1>
+
+    <ul>
+        {% for tag in tagsList %}
+            <li>
+            <p>{{tag.id}}<p>
+            <p>{{tag.name}}<p>
+            <form method="POST" action="{{ path('app_delete_tag', {'id': tag.id}) }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Supprimer</button>
+                </form>
+            </li>
+        {% else %}
+            <li>Aucun tags trouvé.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

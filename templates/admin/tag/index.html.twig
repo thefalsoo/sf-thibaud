@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les tags{% endblock %}
+
+{% block body %}
+    <h1>Gérer les tags</h1>
+    {% include 'admin/tag/listTags.html.twig'  %}
+    {% include 'admin/tag/newTag.html.twig'  %}
+{% endblock %}

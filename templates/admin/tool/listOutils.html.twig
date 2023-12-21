@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des outils</h1>
+
+    <ul>
+
+        {% for outil in outils %}
+            <li>
+
+                <h3>{{ outil.nom }}</h3>
+                <p>{{ outil.id }}</p>     
+                <p>{{ outil.description }}</p> 
+                <p>{{ outil.dateDePublication | date('d/m/Y') }}</p>
+                <p>{{outil.imageName}}<p>
+                <p>Brouillon : {{outil.brouillon}}<p>
+                <img src="{{ asset('/uploads/images/outils/' ~ outil.imageName) }}" alt="Image de l'outil"  style="width: 150px; height: auto;">
+                
+                <a href="{{ path('app_description_tool', {'id': outil.id}) }}">Description</a>
+                <p>Tags:</p>
+                <ul>
+                    {% for tag in outil.tags %}
+                        <li>{{ tag.name }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            <li>Aucun outil trouvé.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Description{% endblock %}
+
+{% block body %}
+    <h1>Description de l'outil</h1>
+    <p>ID : {{ outil.id }}</p>
+    <p>Nom : {{ outil.nom }}</p>
+    <p>Slug : {{ outil.slug }}</p>
+    <p>URL de l'outil : {{ outil.toolUrl }}</p>
+    <p>Description : {{ outil.description }}</p>
+    <p>Date de publication : {{ outil.dateDePublication|date('d/m/Y H:i') }}</p>
+    <p>Date de modification : {{ outil.dateDeModification ? outil.dateDeModification|date('d/m/Y H:i') : 'Non modifié' }}</p>
+    <p>État brouillon : {{ outil.brouillon ? 'Brouillon' : 'Publié' }}</p>
+    <form method="POST" action="{{ path('app_delete_tool', {'id': outil.id}) }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Supprimer</button>
+                </form>
+                <a href="{{ path('app_edit_tool', {'id': outil.id}) }}">Modifier</a>
+    {% if outil.imageName %}
+        <img src="{{ asset('/uploads/images/outils/' ~ outil.imageName) }}" alt="Image de l'outil" style="width: 150px; height: auto;">
+    {% else %}
+        <p>Aucune image disponible pour cet outil.</p>
+    {% endif %}
+{% endblock %}

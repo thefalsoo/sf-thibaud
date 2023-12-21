@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <h1>Admin page</h1>
+    <a href="{{ path('app_new_tool') }}">New tools</a>
+    <a href="{{ path('app_tag') }}">Gérer les tags</a>
+    <hr> 
+
+    {% include 'admin/tool/listOutils.html.twig'  %}
+{% endblock %}

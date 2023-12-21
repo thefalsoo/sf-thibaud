@@ -1,0 +1,12 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        outils_images: # Assure-toi que le nom du mapping ici correspond au nom que tu utilises dans ton entité
+            uri_prefix: /uploads/images/outils # Définis le préfixe URI pour les images des outils
+            upload_destination: '%kernel.project_dir%/public/uploads/images/outils' # Définis le répertoire d'upload
+            namer: Vich\UploaderBundle\Naming\UniqidNamer # Remplace avec le namer que tu veux utiliser, par exemple 'vich_uploader.namer_uniqid'
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
